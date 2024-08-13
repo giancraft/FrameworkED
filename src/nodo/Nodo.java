@@ -2,17 +2,17 @@ package nodo;
 
 public class Nodo<T> {
 	private T dado;
-	private Nodo<?> prox;
+	private Nodo<T> prox;
 
 	public Nodo(T dado) {
 		this.prox = null;
 		this.dado = dado;
 	}
 	
-	public Nodo<?> getProx() {
+	public Nodo<T> getProx() {
 		return prox;
 	}
-	public void setProx(Nodo<?> inicio) {
+	public void setProx(Nodo<T> inicio) {
 		this.prox = inicio;
 	}
 	public T getDado() {

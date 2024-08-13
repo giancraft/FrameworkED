@@ -1,9 +1,9 @@
 package listasLineares;
-import nodo.Nodo;
+
 import nodo.NodoDuplo;
 import interfaces.Lista;
 
-public class ListaDuplamenteEncadeada<T> implements Lista<T>{
+public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 	private NodoDuplo<?> inicio;
 	private NodoDuplo<?> fim;
 
@@ -11,7 +11,7 @@ public class ListaDuplamenteEncadeada<T> implements Lista<T>{
 	public boolean addFirst(T value) {
 		try {
 			NodoDuplo<?> novo = new NodoDuplo<>(value);
-			if (inicio != null) {
+			if (!isEmpty()) {
 				inicio.setAnt(novo);
 				novo.setProx(inicio);
 			}
@@ -35,7 +35,7 @@ public class ListaDuplamenteEncadeada<T> implements Lista<T>{
 				novo.setAnt(fim);
 			} 
 			fim = novo;
-			if (inicio == null)
+			if (isEmpty())
 				inicio = novo;
 			return true;
 		} catch(Exception e) {
@@ -51,7 +51,7 @@ public class ListaDuplamenteEncadeada<T> implements Lista<T>{
 
 	@Override
 	public String printList() {
-		if(inicio == null) return "";
+		if(isEmpty()) return "";
 		String lista = "[";
 		NodoDuplo<?> aux = inicio;
 		while (aux != null) {
@@ -60,7 +60,7 @@ public class ListaDuplamenteEncadeada<T> implements Lista<T>{
 			} else if (aux.getProx() == null) {
 				lista += aux.getDado() + "]"; 
 			}
-			aux = (NodoDuplo<?>) aux.getProx();
+			aux = aux.getProx();
 		}
 		return lista;
 	}
@@ -70,7 +70,7 @@ public class ListaDuplamenteEncadeada<T> implements Lista<T>{
 		if(isEmpty()) {
 			return 0;
 		}
-		Nodo<?> aux = inicio;
+		NodoDuplo<?> aux = inicio;
 		int count = 0;
 		while (aux != null) {
 			count++;
@@ -92,24 +92,37 @@ public class ListaDuplamenteEncadeada<T> implements Lista<T>{
 	}
 
 	@Override
-	public boolean remove(int index) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean remove(T value) {
-		// TODO Auto-generated method stub
+		if (isEmpty()) return false;
+		if (inicio.getDado() == value) {
+			removeFirst();
+		}
+			
+		NodoDuplo<?> aux = inicio;
+		while (aux != null) {
+			if (aux.getDado() == value) {
+				if (aux == fim) {
+					removeLast();
+					return true;
+				} else {
+					aux.getProx().setAnt(aux.getAnt());
+					aux.getAnt().setProx(aux.getProx());
+					return true;
+				}
+			}
+
+			aux = aux.getProx();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean removeFirst() {
 		try {
-			if (inicio == null) return false;
+			if (isEmpty()) return false;
 			
 			NodoDuplo<?> nodoRemovido = inicio;
-			inicio = (NodoDuplo<?>) inicio.getProx();
+			inicio = inicio.getProx();
 			if (inicio != null) {
 				inicio.setAnt(null);
 			}
@@ -130,7 +143,7 @@ public class ListaDuplamenteEncadeada<T> implements Lista<T>{
 			
 			NodoDuplo<?> nodoRemovido = fim;
 			if (fim != null)
-				fim = (NodoDuplo<?>) fim.getAnt();
+				fim = fim.getAnt();
 				fim.setProx(fim.getProx().getProx());
 				inicio.setAnt(fim);
 			if (nodoRemovido == inicio) {
@@ -145,13 +158,33 @@ public class ListaDuplamenteEncadeada<T> implements Lista<T>{
 
 	@Override
 	public Object get(int index) {
-		// TODO Auto-generated method stub
+		if (isEmpty()) return null;
+		int posicao = 0;
+		if (index == 0)
+			return inicio.getDado();
+		NodoDuplo<?> aux = inicio;
+		while (aux != null) {
+			posicao++;
+			aux = aux.getProx();
+			if (index == posicao)
+				return aux.getDado();
+		}
+		
 		return null;
 	}
 
 	@Override
 	public Object get(T value) {
-		// TODO Auto-generated method stub
+		if (isEmpty()) return null;
+		if (inicio.getDado() == value)
+			return inicio.getDado();
+		NodoDuplo<?> aux = inicio;
+		while (aux != null) {
+			if (aux.getDado() == value)
+				return aux.getDado();
+			aux = aux.getProx();
+		}
+		
 		return null;
 	}
 	

@@ -3,8 +3,8 @@ package listasLineares;
 import nodo.Nodo;
 import interfaces.Lista;
 
-public class ListaEncadeada <T> implements Lista<T>{
-	private Nodo<?> inicio;
+public class ListaEncadeada <T> extends TipoLista implements Lista<T>{
+	private Nodo<T> inicio;
 	
 	@Override
 	public boolean isEmpty() {
@@ -33,7 +33,7 @@ public class ListaEncadeada <T> implements Lista<T>{
 				return false;
 			}
 			Nodo<T> novoNodo = new Nodo<T>(value);
-			Nodo<?> aux = inicio;
+			Nodo<T> aux = inicio;
 			while (aux.getProx() != null) {
 				aux = aux.getProx();
 			}
@@ -51,16 +51,17 @@ public class ListaEncadeada <T> implements Lista<T>{
 			return "";
 		}
 		Nodo<?> aux = inicio;
-		String lista = "[";
+		StringBuilder lista = new StringBuilder("[");
 		do {
+			lista.append(aux.getDado());
 			if (aux.getProx() != null) {
-				lista += aux.getDado() + ", "; 
+				lista.append(", "); 
 			} else if (aux.getProx() == null) {
-				lista += aux.getDado() + "]"; 
+				lista.append("]"); 
 			}
 			aux = aux.getProx();
 		} while (aux != null);
-		return lista;
+		return lista.toString();
 	}
 	
 	@Override
@@ -94,10 +95,10 @@ public class ListaEncadeada <T> implements Lista<T>{
 			if (isEmpty()) 
 				return false;
 			if (inicio.getDado() == value) {
-				inicio = inicio.getProx();
+				removeFirst();
 				return true;
 			}
-			Nodo<?> aux = inicio;
+			Nodo<T> aux = inicio;
 			while (aux.getProx() != null) {
 				if (aux.getProx().getDado() == value) {
 					aux.setProx(aux.getProx().getProx());
@@ -110,11 +111,6 @@ public class ListaEncadeada <T> implements Lista<T>{
 			e.printStackTrace();
 			return false;
 		}
-	}
-	
-	@Override
-	public boolean remove(int index) {
-		return false;
 	}
 	
 	@Override
@@ -138,7 +134,7 @@ public class ListaEncadeada <T> implements Lista<T>{
 				return true;
 			}
 			
-			Nodo<?> aux = inicio;
+			Nodo<T> aux = inicio;
 			while (aux.getProx() != null) {
 				aux = aux.getProx();
 				if(aux.getProx().getProx() == null) {
@@ -155,17 +151,17 @@ public class ListaEncadeada <T> implements Lista<T>{
 	@Override
 	public Object get(int index) {
 		if(isEmpty()) {return null;}
-		if(inicio.getProx() == null) {
+		if(index == 0) {
 			return inicio.getDado();
 		}
 		int posicao = 0;
 		Nodo<?> aux = inicio;
 		do {
+			posicao++;
+			aux = aux.getProx();
 			if (posicao == index) {
 				return aux.getDado();
 			}
-			posicao++;
-			aux = aux.getProx();
 		} while (aux != null);
 		return null;
 	}

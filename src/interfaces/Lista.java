@@ -7,7 +7,6 @@ public interface Lista<T> {
 	public String printList();
 	public int size();
 	public boolean clear();
-	public boolean remove(int index);
 	public boolean remove(T value);
 	public boolean removeFirst();
 	public boolean removeLast();
