@@ -8,7 +8,7 @@ public class ListaEncadeadaFactory<T> implements ListaFactory<T>{
 
 	@Override
 	public Lista<T> criarLista() {
-		return new ListaEncadeada<>();
+		return new ListaEncadeada<T>();
 	}
 
 	

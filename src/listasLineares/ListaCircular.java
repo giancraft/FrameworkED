@@ -1,7 +1,9 @@
 package listasLineares;
 
 import nodo.Nodo;
+import desenhoNodo.DesenhoNodo;
 import interfaces.Lista;
+import javafx.application.Application;
 
 public class ListaCircular<T> extends TipoLista implements Lista<T> {
     private Nodo<T> inicio;
@@ -202,4 +204,16 @@ public class ListaCircular<T> extends TipoLista implements Lista<T> {
         } while (aux != inicio);
         return null;
     }
+
+	@Override
+	public boolean desenharLista() {
+		try {
+			DesenhoNodo.setInicio(inicio);
+	        Application.launch(DesenhoNodo.class);
+			return true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

@@ -1,16 +1,18 @@
 package listasLineares;
 
 import nodo.NodoDuplo;
+import desenhoNodo.DesenhoNodo;
 import interfaces.Lista;
+import javafx.application.Application;
 
 public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
-	private NodoDuplo<?> inicio;
-	private NodoDuplo<?> fim;
+	private NodoDuplo<T> inicio;
+	private NodoDuplo<T> fim;
 
 	@Override
 	public boolean addFirst(T value) {
 		try {
-			NodoDuplo<?> novo = new NodoDuplo<>(value);
+			NodoDuplo<T> novo = new NodoDuplo<>(value);
 			if (!isEmpty()) {
 				inicio.setAnt(novo);
 				novo.setProx(inicio);
@@ -29,7 +31,7 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 	@Override
 	public boolean addLast(T value) {
 		try {
-			NodoDuplo<?> novo = new NodoDuplo<>(value);
+			NodoDuplo<T> novo = new NodoDuplo<>(value);
 			if (fim != null) {
 				fim.setProx(novo);
 				novo.setAnt(fim);
@@ -98,7 +100,7 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 			removeFirst();
 		}
 			
-		NodoDuplo<?> aux = inicio;
+		NodoDuplo<T> aux = inicio;
 		while (aux != null) {
 			if (aux.getDado() == value) {
 				if (aux == fim) {
@@ -121,7 +123,7 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		try {
 			if (isEmpty()) return false;
 			
-			NodoDuplo<?> nodoRemovido = inicio;
+			NodoDuplo<T> nodoRemovido = inicio;
 			inicio = inicio.getProx();
 			if (inicio != null) {
 				inicio.setAnt(null);
@@ -141,7 +143,7 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		try {
 			if (fim == null) return false;
 			
-			NodoDuplo<?> nodoRemovido = fim;
+			NodoDuplo<T> nodoRemovido = fim;
 			if (fim != null)
 				fim = fim.getAnt();
 				fim.setProx(fim.getProx().getProx());
@@ -186,6 +188,18 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		}
 		
 		return null;
+	}
+
+	@Override
+	public boolean desenharLista() {
+		try {
+			DesenhoNodo.setInicio(inicio);
+	        Application.launch(DesenhoNodo.class);
+			return true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 }

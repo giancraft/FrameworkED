@@ -2,6 +2,8 @@ package listasLineares;
 
 import nodo.Nodo;
 import interfaces.Lista;
+import javafx.application.Application;
+import desenhoNodo.DesenhoNodo;
 
 public class ListaEncadeada <T> extends TipoLista implements Lista<T>{
 	private Nodo<T> inicio;
@@ -179,4 +181,15 @@ public class ListaEncadeada <T> extends TipoLista implements Lista<T>{
 		return null;
 		
 	}
+	
+	public boolean desenharLista() {
+		try {
+			DesenhoNodo.setInicio(inicio);
+	        Application.launch(DesenhoNodo.class);
+			return true;
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+    }
 }

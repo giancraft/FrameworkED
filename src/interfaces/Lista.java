@@ -12,4 +12,5 @@ public interface Lista<T> {
 	public boolean removeLast();
 	public Object get(int index);
 	public Object get(T value);
+	public boolean desenharLista();
 }

@@ -1,33 +1,44 @@
 package main;
 
-import interfaces.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import factories.*;
+import facade.ListaFacade;
 
 public class Main {
 
 	public static void main(String[] args) {
-		ArrayList<Integer> list = new ArrayList<>();
+		
+		ListaFacade<Integer> lista = new ListaFacade<>();
+		lista.criarListaEncadeada();
+		
+		ListaFacade<String> listaCirc = new ListaFacade<>();
+		listaCirc.criarListaCircular();
+		
+		ListaFacade<String> listaDupla = new ListaFacade<>();
+		listaDupla.criarListaDuplamenteEncadeada();
+		
+		/*ArrayList<Integer> list = new ArrayList<>();
 		LinkedList<Integer> listaa = new LinkedList<>();
-		ListaFactory<String> listaEn = new ListaEncadeadaFactory<>();
-		Lista<String> lista = listaEn.criarLista();
 		
-		ListaFactory<String> listaC = new ListaCircularFactory<>();
-		Lista<String> listaCirc = listaC.criarLista();
+		//ListaFactory<String> listaEn = new ListaEncadeadaFactory<>();
+		Lista<String> lista = new ListaEncadeadaFactory<String>().criarLista();
 		
-		ListaFactory<String> listaD = new ListaDuplamenteEncadeadaFactory<>();
-		Lista<String> listaDupla = listaD.criarLista();
+		//ListaFactory<String> listaC = new ListaCircularFactory<>();
+		Lista<String> listaCirc = new ListaCircularFactory<String>().criarLista();
+		
+		//ListaFactory<String> listaD = new ListaDuplamenteEncadeadaFactory<>();
+		Lista<String> listaDupla = new ListaDuplamenteEncadeadaFactory<String>().criarLista();*/
 		
 		/*ListaEncadeada<Integer> lista = new ListaEncadeada<>();
 		ListaCircular<Integer> listaCirc = new ListaCircular<>();
 		ListaDuplamenteEncadeada<Integer> listaDupla = new ListaDuplamenteEncadeada<>();*/
 		
-		/*lista.addFirst("c");
-		lista.addFirst("b");
-		lista.addFirst("a");
+		/*lista.addFirst("caba");
+		lista.addFirst("baka");
+		lista.addFirst("abba");
 		
 		System.out.println(lista.printList());
+		lista.desenharLista();
 		System.out.println(lista.get(1));
 		lista.removeFirst();
 		System.out.println(lista.printList());
@@ -44,11 +55,36 @@ public class Main {
 		System.out.println(lista.printList());
 		System.out.println(lista.get(0));
 		System.out.println(lista.size());*/
+		//lista.desenharLista();
+		
+		lista.addFirst(1);
+		lista.addFirst(2);
+		lista.addFirst(3);
+		
+		System.out.println(lista.printList());
+		lista.desenharLista();
+		System.out.println(lista.get(1));
+		lista.removeFirst();
+		System.out.println(lista.printList());
+		lista.clear();
+		System.out.println(lista.printList());
+		lista.addLast(4);
+		lista.addLast(5);
+		lista.addLast(6);
+		lista.addLast(7);
+		System.out.println(lista.printList());
+		lista.removeLast();
+		System.out.println(lista.printList());
+		lista.remove(8);
+		System.out.println(lista.printList());
+		System.out.println(lista.get(0));
+		System.out.println(lista.size());
 		
 		/*listaCirc.addFirst("c");
 		listaCirc.addFirst("b");
 		listaCirc.addFirst("a");
 		System.out.println(listaCirc.printList());
+		listaCirc.desenharLista();
 		listaCirc.removeLast();
 		System.out.println(listaCirc.printList());
 		listaCirc.remove("a");
@@ -76,6 +112,7 @@ public class Main {
 		System.out.println(listaDupla.printList());
 		System.out.println(listaDupla.size());
 		System.out.println(listaDupla.get(0));
+		listaDupla.desenharLista();
 		listaDupla.removeFirst();
 		System.out.println(listaDupla.printList());
 		System.out.println(listaDupla.size());
@@ -95,15 +132,15 @@ public class Main {
 		
 		listaDupla.addLast("g");
 		listaDupla.addLast("h");
-		listaDupla.remove("i");
+		listaDupla.addLast("i");
 		System.out.println(listaDupla.printList());
 		System.out.println(listaDupla.size());*/
 		
-		System.out.println();
+		/*System.out.println();
 		
 		list.add(3);
 		list.add(2);
-		list.add(1);
+		list.add(1);*/
 	}
 
 }
