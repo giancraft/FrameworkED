@@ -208,7 +208,7 @@ public class ListaCircular<T> extends TipoLista implements Lista<T> {
 	@Override
 	public boolean desenharLista() {
 		try {
-			DesenhoNodo.setInicio(inicio);
+			DesenhoNodo.setInicio(inicio, true);
 	        Application.launch(DesenhoNodo.class);
 			return true;
 		} catch(Exception e) {

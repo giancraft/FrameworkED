@@ -57,9 +57,9 @@ public class Main {
 		System.out.println(lista.size());*/
 		//lista.desenharLista();
 		
-		lista.addFirst(1);
-		lista.addFirst(2);
-		lista.addFirst(3);
+		/*lista.addFirst(123);
+		lista.addFirst(234);
+		lista.addFirst(356);
 		
 		System.out.println(lista.printList());
 		lista.desenharLista();
@@ -78,10 +78,33 @@ public class Main {
 		lista.remove(8);
 		System.out.println(lista.printList());
 		System.out.println(lista.get(0));
-		System.out.println(lista.size());
+		System.out.println(lista.size());*/
 		
 		/*listaCirc.addFirst("c");
 		listaCirc.addFirst("b");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
+		listaCirc.addFirst("a");
 		listaCirc.addFirst("a");
 		System.out.println(listaCirc.printList());
 		listaCirc.desenharLista();
@@ -134,7 +157,7 @@ public class Main {
 		listaDupla.addLast("h");
 		listaDupla.addLast("i");
 		System.out.println(listaDupla.printList());
-		System.out.println(listaDupla.size());*/
+		System.out.println(listaDupla.size());
 		
 		/*System.out.println();
 		

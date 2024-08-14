@@ -184,7 +184,7 @@ public class ListaEncadeada <T> extends TipoLista implements Lista<T>{
 	
 	public boolean desenharLista() {
 		try {
-			DesenhoNodo.setInicio(inicio);
+			DesenhoNodo.setInicio(inicio, false);
 	        Application.launch(DesenhoNodo.class);
 			return true;
 		} catch(Exception e) {
