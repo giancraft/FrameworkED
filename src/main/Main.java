@@ -57,9 +57,24 @@ public class Main {
 		System.out.println(lista.size());*/
 		//lista.desenharLista();
 		
-		/*lista.addFirst(123);
-		lista.addFirst(234);
-		lista.addFirst(356);
+		/*lista.addFirst(12345678);
+		lista.addFirst(234899889);
+		lista.addFirst(356247327);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
+		lista.addFirst(1);
 		
 		System.out.println(lista.printList());
 		lista.desenharLista();
@@ -130,6 +145,33 @@ public class Main {
 		
 		/*listaDupla.addFirst("c");
 		listaDupla.addFirst("b");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
+		listaDupla.addFirst("a");
 		listaDupla.addFirst("a");
 		
 		System.out.println(listaDupla.printList());

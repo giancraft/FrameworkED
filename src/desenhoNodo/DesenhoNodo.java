@@ -12,21 +12,53 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import nodo.*;
 
+
+/**
+ * Classe que representa um desenho de uma Lista Lineare genérica.
+ *
+ * @author gianlucamk04@gmail.com
+ *
+ * @param <T> Tipo de dados armazenados na lista
+ */
 public class DesenhoNodo<T> extends Application{
     private static Nodo<?> nodo;
     private static NodoDuplo<?> nodoDuplo;
     private static boolean isCircular;
 
+    /**
+     * Armazena qual o nodo inicial da lista.
+     * 
+     * @param <T>
+     * 
+     * @param inicio Nodo inicial a ser definido
+     * 
+     * @param circular define se a lista é circular ou não
+     */
     public static void setInicio(Nodo<?> inicio, boolean circular) {
         nodo = inicio;
         isCircular = circular;
     }
 
+    /**
+     * Armazena qual o nodo inicial da lista.
+     * 
+     * @param <T>
+     * 
+     * @param inicio Nodo inicial a ser definido
+     *
+     */
     public static void setInicio(NodoDuplo<?> inicio) {
         nodoDuplo = inicio;
-        isCircular = false;
     }
 
+    /**
+     * Inicia o desenho de uma lista específica.
+     * 
+     * @param <Stage>
+     * 
+     * @param primaryStage define o estágio inicial
+     *
+     */
     @Override
     public void start(Stage primaryStage) {
         Pane root = new Pane();
@@ -37,7 +69,11 @@ public class DesenhoNodo<T> extends Application{
         double larguraNodo = 30;
 
         // Cálculo do tamanho do Canvas baseado no número de nós
-        int totalNodos = contarNodos();
+        int totalNodos = 0;
+        if (nodo != null)
+        	totalNodos = contarNodos();
+        else if (nodoDuplo != null)
+        	totalNodos = contarNodosDuplo();
         double larguraCanvas = Math.max(larguraTela, totalNodos * (larguraNodo + espacamento));
         Canvas canvas = new Canvas(larguraCanvas, alturaTela);
 
@@ -56,6 +92,14 @@ public class DesenhoNodo<T> extends Application{
         primaryStage.show();
     }
 
+    /**
+     * Desenha uma lista específica.
+     * 
+     * @param <GraphicsContext>
+     * 
+     * @param gc define qual o módelo gráfico a ser desenhado
+     *
+     */
     private void desenhar(GraphicsContext gc) {
         gc.setFill(Color.BLACK);
         gc.setStroke(Color.BLUE);
@@ -69,6 +113,11 @@ public class DesenhoNodo<T> extends Application{
         }
     }
 
+    /**
+     * Conta os nodos pertencentes uma lista simplismente encadeada específica.
+     * 
+     * @return o total de Nodos que esta lista possui
+     */
     private int contarNodos() {
         Nodo<?> current = nodo;
         int count = 0;
@@ -83,7 +132,31 @@ public class DesenhoNodo<T> extends Application{
         }
         return count;
     }
+    
+    /**
+     * Conta os nodos pertencentes uma lista duplamente encadeada específica.
+     * 
+     * @return o total de Nodos que esta lista possui
+     */
+    private int contarNodosDuplo() {
+        NodoDuplo<?> current = nodoDuplo;
+        int count = 0;
 
+        while (current != null) {
+            count++;
+            current = current.getProx();
+        }
+        return count;
+    }
+
+    /**
+     * Desenha uma lista simplismente encadeada específica.
+     * 
+     * @param <GraphicsContext>
+     * 
+     * @param gc define qual o módelo gráfico a ser desenhado
+     *
+     */
     private void desenharListaSimples(GraphicsContext gc) {
         Nodo<?> current = nodo;
         double x = 100;
@@ -103,8 +176,13 @@ public class DesenhoNodo<T> extends Application{
 
             // Desenhar o dado embaixo do retângulo
             gc.setFont(new Font(10));
-            gc.fillText(dado, x + 10, y + 40);
-            gc.setFont(new Font(12));
+            if (dado.length() < 4)
+            	gc.fillText(dado, (x + 10) - dado.length(), y + 40);
+            else if(dado.length() >= 4 && dado.length() < 6)
+            	gc.fillText(dado, (x + 5) - dado.length(), y + 40);
+            else
+            	gc.fillText(dado, x - dado.length(), y + 40);
+            gc.setFont(new Font(11));
 
             if (current.getProx() != null && current.getProx() != primeiroNodo) {
                 // Desenhar a seta para o próximo nodo
@@ -129,7 +207,6 @@ public class DesenhoNodo<T> extends Application{
         if (isCircular && current == primeiroNodo) {
             double lastX = x - espacamento + largura;
             double primeiroX = 100;
-            double primeiroY = y;
 
             gc.strokeLine(lastX + largura, y + altura / 2, lastX, y + altura / 2);
             gc.strokeLine(lastX + largura, y + altura / 2, lastX + altura/2 + largura / 2, y - altura);
@@ -140,6 +217,14 @@ public class DesenhoNodo<T> extends Application{
         }
     }
 
+    /**
+     * Desenha uma lista duplamente encadeada específica.
+     * 
+     * @param <GraphicsContext>
+     * 
+     * @param gc define qual o módelo gráfico a ser desenhado
+     *
+     */
     private void desenharListaDuplamenteEncadeada(GraphicsContext gc) {
         NodoDuplo<?> current = nodoDuplo;
         double x = 100;
@@ -156,8 +241,13 @@ public class DesenhoNodo<T> extends Application{
             gc.fillText(Integer.toString(posicao), x + 10, y + 20);
 
             gc.setFont(new Font(10));
-            gc.fillText(dado, x + 10, y + 40);
-            gc.setFont(new Font(12));
+            if (dado.length() < 4)
+            	gc.fillText(dado, (x + 10) - dado.length(), y + 40);
+            else if(dado.length() >= 4 && dado.length() < 6)
+            	gc.fillText(dado, (x + 5) - dado.length(), y + 40);
+            else
+            	gc.fillText(dado, x - dado.length(), y + 40);
+            gc.setFont(new Font(11));
 
             if (current.getProx() != null) {
                 gc.strokeLine(x + largura, y + altura / 2, x + largura + espacamento - 35.5, y + altura / 2);

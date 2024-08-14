@@ -5,10 +5,35 @@ import desenhoNodo.DesenhoNodo;
 import interfaces.Lista;
 import javafx.application.Application;
 
-public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
+/**
+ * Classe que representa uma Lista Duplamente Encadeada genérica.
+ *
+ * @author gianlucamk04@gmail.com
+ *
+ * @param <T> Tipo de dados armazenados na lista
+ */
+
+public class ListaDuplamenteEncadeada<T> implements Lista<T>{
 	private NodoDuplo<T> inicio;
 	private NodoDuplo<T> fim;
 
+	/**
+     * Construtor que inicializa uma lista duplamente encadeada vazia.
+     */
+	public ListaDuplamenteEncadeada() {
+		inicio = null;
+        fim = null;
+	}
+	
+	/**
+     * Adiciona um elemento ao inicio da lista.
+     * 
+     * @param <T> 
+     * 
+     * @param value Valor a ser adicionado
+     * 
+     * @return true se o elemento foi adicionado com sucesso, false caso o contrário
+     */
 	@Override
 	public boolean addFirst(T value) {
 		try {
@@ -28,6 +53,15 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		}
 	}
 
+	/**
+     * Adiciona um elemento ao final da lista.
+     * 
+     * @param <T> 
+     * 
+     * @param value Valor a ser adicionado
+     * 
+     * @return true se o elemento foi adicionado com sucesso, false caso o contrário
+     */
 	@Override
 	public boolean addLast(T value) {
 		try {
@@ -46,11 +80,21 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		}
 	}
 
+	/**
+     * Retorna se a lista está vazia.
+     * 
+     * @return true se a lista está vazia, false caso o contrário
+     */
 	@Override
 	public boolean isEmpty() {
 		return inicio == null;
 	}
 
+	/**
+     * Retorna uma String com os dados armazenados na lista.
+     * 
+     * @return retorna a String com os dados armazenados
+     */
 	@Override
 	public String printList() {
 		if(isEmpty()) return "";
@@ -67,6 +111,11 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		return lista;
 	}
 
+	/**
+     * Retorna o tamanho da lista.
+     * 
+     * @return Número de elementos na lista
+     */
 	@Override
 	public int size() {
 		if(isEmpty()) {
@@ -81,6 +130,11 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		return count;
 	}
 
+	/**
+     * Remove todos os elementos da lista.
+     * 
+     * @return true se a lista foi limpa, false caso o contrário
+     */
 	@Override
 	public boolean clear() {
 		try {
@@ -93,6 +147,15 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		}
 	}
 
+	/**
+     * Remove um elemento específico da lista.
+     * 
+     * @param <T>
+     * 
+     * @param value Valor a ser removido
+     * 
+     * @return true se a foi removido com sucesso, false caso o contrário
+     */
 	@Override
 	public boolean remove(T value) {
 		if (isEmpty()) return false;
@@ -118,6 +181,11 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		return false;
 	}
 
+	/**
+     * Remove um elemento específico do inicio da lista.
+     * 
+     * @return true se a foi removido com sucesso, false caso o contrário
+     */
 	@Override
 	public boolean removeFirst() {
 		try {
@@ -138,6 +206,11 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		}
 	}
 
+	/**
+     * Remove um elemento específico do final da lista.
+     * 
+     * @return true se a foi removido com sucesso, false caso o contrário
+     */
 	@Override
 	public boolean removeLast() {
 		try {
@@ -158,6 +231,13 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		}
 	}
 
+	/**
+     * Busca por um elemento na lista.
+     * 
+     * @param index Index referente a posição na lista do elemento a ser buscado
+     * 
+     * @return true se o elemento foi encontrado, false caso contrário
+     */
 	@Override
 	public Object get(int index) {
 		if (isEmpty()) return null;
@@ -175,6 +255,15 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		return null;
 	}
 
+	/**
+     * Busca por um elemento na lista.
+     * 
+     * @param <T>
+     * 
+     * @param value Valor a ser buscado
+     * 
+     * @return true se o elemento foi encontrado, false caso contrário
+     */
 	@Override
 	public Object get(T value) {
 		if (isEmpty()) return null;
@@ -190,6 +279,11 @@ public class ListaDuplamenteEncadeada<T> extends TipoLista implements Lista<T>{
 		return null;
 	}
 
+	/**
+     * Faz um desenho da lista.
+     * 
+     * @return true se o desenho foi realizado, false caso contrário
+     */
 	@Override
 	public boolean desenharLista() {
 		try {
