@@ -55,7 +55,7 @@ public class ListaFacade<T> implements Lista<T>{
     }
 
     /**
-     * Cria uma Lista Encadeada e armazena na varável lista.
+     * Cria uma Lista Encadeada e armazena na variável lista.
      * 
      * @return a lista encadeada criada
      */
